@@ -1,0 +1,66 @@
+{
+    "about": {
+        "intro": "I'm a *Frontend Web Developer* focused on building **clean, modern, and high-performance user interfaces**.",
+        "description": "I'm passionate about **crafting pixel-perfect web experiences** and constantly turning creative designs into functional code. I build dynamic *web applications* using simple, **practical**, and **scalable** frontend tools.",
+        "full": "Hi, I'm **Abdul Khalil**. I am a dedicated Frontend Web Developer with a strong focus on creating interactive, responsive, and aesthetically pleasing web interfaces.\n\nMy core stack revolves around modern web technologies including *React*, *Next.js*, *Tailwind CSS*, *JavaScript*, *HTML5*, and *CSS3*. I specialize in bringing designs to life with smooth animations using libraries like *Framer Motion* and *Lenis*.\n\nI pay meticulous attention to detail to ensure projects are **clean, maintainable, and highly responsive** across all devices. I enjoy solving complex layout challenges and optimizing user experiences.\n\nMy current goal is to build scalable web applications, collaborate on exciting client projects, and continuously expand my expertise in modern web development."
+    },
+    "manifesto": [
+        "PIXEL-PERFECT DESIGN",
+        "INTENTIONAL MINIMALISM",
+        "USER-CENTRIC PERFORMANCE",
+        "CLEAN ARCHITECTURE",
+        "CONTINUOUS LEARNING",
+        "SCALABLE VISION"
+    ],
+    "projects": [
+        {
+            "id": "1",
+            "title": "Developer Portfolio",
+            "category": "Web Application",
+            "year": "2026",
+            "description": "A modern, interactive frontend developer portfolio built with Next.js, React, and Tailwind CSS. Features smooth scrolling, custom modal dialogues, multi-language localization, and dynamic Framer Motion animations.",
+            "image": "/projects/portfolio.jpg",
+            "repo": "https://github.com/AbdulKhalil-Dev/my-portfolio",
+            "stack": [
+                "Next.js",
+                "React",
+                "TailwindCSS",
+                "Framer Motion",
+                "TypeScript"
+            ]
+        }
+    ],
+    "roadmap": [
+        {
+            "id": "01",
+            "year": "2024",
+            "description": "Started my web development journey by mastering fundamental web technologies: HTML5, CSS3, and core JavaScript concepts.",
+            "stack": [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ]
+        },
+        {
+            "id": "02",
+            "year": "2025",
+            "description": "Expanded into modern frontend development using React and utility-first styling with Tailwind CSS to build complex, responsive user interfaces.",
+            "stack": [
+                "React",
+                "TailwindCSS",
+                "JavaScript"
+            ]
+        },
+        {
+            "id": "03",
+            "year": "2026",
+            "description": "Advanced to full-fledged production workflows with Next.js, TypeScript, smooth animation engines (Framer Motion, Lenis), and project localization.",
+            "stack": [
+                "Next.js",
+                "React",
+                "TailwindCSS",
+                "TypeScript"
+            ]
+        }
+    ]
+}

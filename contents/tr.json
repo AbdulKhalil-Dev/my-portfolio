@@ -1,0 +1,66 @@
+{
+    "about": {
+        "intro": "**Temiz, modern ve yüksek performanslı kullanıcı arayüzleri** geliştirmeye odaklanmış bir *Ön Yüz (Frontend) Web Geliştiricisiyim*.",
+        "description": "Tutkuyla **piksel mükemmelliğinde web deneyimleri tasarlayan** ve sürekli yeni fikirleri kodlara dönüştüren biriyim. Basit, **pratik** me **ölçeklenebilir** frontend araçları kullanarak dinamik *web uygulamaları* geliştiriyorum.",
+        "full": "Merhaba, ben **Abdul Khalil**. İnteraktif, duyarlı (responsive) ve estetik web arayüzleri oluşturmaya odaklanmış tutkulu bir Frontend Web Geliştiricisiyim.\n\nTemel teknoloji yığınım *React*, *Next.js*, *Tailwind CSS*, *JavaScript*, *HTML5* ve *CSS3* gibi modern web teknolojileri etrafında şekillenmektedir. *Framer Motion* ve *Lenis* gibi kütüphaneleri kullanarak tasarımlara pürüzsüz animasyonlarla hayat verme konusunda uzmanım.\n\nProjelerimin **temiz, sürdürülebilir ve tüm cihazlarda yüksek performanslı** olmasına büyük özen gösteririm. Karmaşık düzen zorluklarını çözmekten ve kullanıcı deneyimini optimize etmekten keyif alıyorum.\n\nŞu anki hedefim ölçeklenebilir web uygulamaları geliştirmek, heyecan verici projelerde yer almak ve modern web geliştirme alanındaki uzmanlığımı sürekli artırmaktır."
+    },
+    "manifesto": [
+        "PIXEL-PERFECT TASARIM",
+        "BİLİNÇLİ MİNİMALİZM",
+        "KULLANICI ODAKLI PERFORMANS",
+        "TEMİZ MİMARİ",
+        "SÜREKLİ ÖĞRENME",
+        "ÖLÇEKLENEBİLİR VİZYON"
+    ],
+    "projects": [
+        {
+            "id": "1",
+            "title": "Geliştirici Portfolyosu",
+            "category": "Web Uygulaması",
+            "year": "2026",
+            "description": "Next.js, React ve Tailwind CSS ile inşa edilmiş modern ve etkileşimli ön yüz geliştirici portfolyosu. Pürüzsüz kaydırma, özel modal diyalogları, çoklu dil desteği ve dinamik Framer Motion animasyonları içerir.",
+            "image": "/projects/portfolio.jpg",
+            "repo": "https://github.com/AbdulKhalil-Dev/my-portfolio",
+            "stack": [
+                "Next.js",
+                "React",
+                "TailwindCSS",
+                "Framer Motion",
+                "TypeScript"
+            ]
+        }
+    ],
+    "roadmap": [
+        {
+            "id": "01",
+            "year": "2024",
+            "description": "Temel web teknolojilerinde (HTML5, CSS3 ve temel JavaScript) uzmanlaşarak web geliştirme yolculuğuma başladım.",
+            "stack": [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ]
+        },
+        {
+            "id": "02",
+            "year": "2025",
+            "description": "Karmaşık ve duyarlı kullanıcı arayüzleri oluşturmak için React ve Tailwind CSS kullanarak modern ön yüz geliştirmeye geçiş yaptım.",
+            "stack": [
+                "React",
+                "TailwindCSS",
+                "JavaScript"
+            ]
+        },
+        {
+            "id": "03",
+            "year": "2026",
+            "description": "Next.js, TypeScript, pürüzsüz animasyon motorları (Framer Motion, Lenis) ve proje yerelleştirmesi (i18n) ile profesyonel üretime odaklandım.",
+            "stack": [
+                "Next.js",
+                "React",
+                "TailwindCSS",
+                "TypeScript"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "nav": {
+        "home": "Ana Sayfa",
+        "about": "Hakkımda",
+        "stack": "Teknolojiler",
+        "projects": "Projeler",
+        "roadmap": "Yol Haritası",
+        "contact": "İletişim"
+    },
+    "title": {
+        "about": "Hakkımda",
+        "stack": "Teknoloji Yığını",
+        "projects": "Öne Çıkan Projeler",
+        "roadmap": "Yol Haritası",
+        "contact": "İletişime Geçin"
+    },
+    "scrollDown": "Kaydır",
+    "contactMe": "İletişime Geç",
+    "exploreProjects": "Projeleri Keşfet",
+    "readFullVersion": "Tamamını Oku",
+    "frontendStack": "Frontend Teknolojileri",
+    "backendStack": "Backend Teknolojileri",
+    "databaseStack": "Veritabanları ve ORM'ler",
+    "toolsStack": "Araçlar ve Altyapı",
+    "projectsIntro": "*deneyler*, *ürünler* ve *dijital eserlerden* oluşan, **boşlukta** şekillendirilmiş bir koleksiyon.",
+    "projectsScrollText": "Keşfetmek için kaydır",
+    "projectsEndText": "Son",
+    "roadmapDescription": "Web geliştirme yolculuğum — öne çıkan dönüm noktaları, edinilen deneyimler ve uzmanlaşılan teknolojiler.",
+    "contactIntroText": "İster sıfırdan bir proje inşa edelim ister mevcut bir uygulamayı büyütelim, iletişime geçelim.",
+    "sendEmail": "E-posta Gönder",
+    "directLine": "Doğrudan Hat",
+    "allRightsReserved": "Tüm hakları saklıdır.",
+    "contactModalDescription": "Bana bir mesaj gönderin, en kısa sürede size geri dönüş yapayım.",
+    "projectDetails": "Detayları:",
+    "aboutProject": "Proje Hakkında",
+    "technologies": "Kullanılan Teknolojiler",
+    "liveDemo": "Canlı Demo",
+    "sourceCode": "Kaynak Kodları",
+    "notFound": {
+        "title": "Sayfa Bulunamadı",
+        "description": "Aradığınız sayfa kaldırılmış, adı değiştirilmiş veya geçici olarak kullanım dışı kalmış olabilir.",
+        "goHome": "Ana Sayfaya Dön"
+    }
+}

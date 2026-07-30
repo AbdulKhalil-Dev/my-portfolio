@@ -1,0 +1,82 @@
+{
+    "contact": {
+        "location": "Pakistan",
+        "email": "your-email@gmail.com",
+        "phone": "+923000000000"
+    },
+    "social": [
+        {
+            "label": "GitHub",
+            "href": "https://github.com/AbdulKhalil-Dev"
+        },
+        {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/your-profile"
+        },
+        {
+            "label": "Fiverr",
+            "href": "https://www.fiverr.com/your-username"
+        }
+    ],
+    "stack": {
+        "frontend": [
+            {
+                "name": "React",
+                "icon": "/stack/react.svg",
+                "featured": true
+            },
+            {
+                "name": "Next.js",
+                "icon": "/stack/nextjs.svg",
+                "featured": true
+            },
+            {
+                "name": "Tailwind CSS",
+                "icon": "/stack/tailwindcss.svg",
+                "featured": true
+            },
+            {
+                "name": "JavaScript",
+                "icon": "/stack/javascript.svg",
+                "featured": true
+            },
+            {
+                "name": "Framer Motion",
+                "icon": "/stack/framermotion.svg"
+            },
+            {
+                "name": "TypeScript",
+                "icon": "/stack/typescript.svg"
+            },
+            {
+                "name": "HTML5",
+                "icon": "/stack/html5.svg"
+            },
+            {
+                "name": "CSS3",
+                "icon": "/stack/css3.svg"
+            }
+        ],
+        "backend": [
+            {
+                "name": "Node.js",
+                "icon": "/stack/nodejs.svg"
+            }
+        ],
+        "database": [],
+        "tools": [
+            {
+                "name": "Git",
+                "icon": "/stack/git.svg"
+            },
+            {
+                "name": "GitHub",
+                "icon": "/stack/github.svg"
+            },
+            {
+                "name": "Vercel",
+                "icon": "/stack/vercel.svg"
+            }
+        ]
+    }
+}
