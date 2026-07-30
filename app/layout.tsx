@@ -6,13 +6,19 @@ export const metadata: Metadata = {
   description: "Frontend Developer Portfolio",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang?: string }>;
 }>) {
+  // Extract language or fallback to 'en'
+  const resolvedParams = await params;
+  const lang = resolvedParams?.lang || "en";
+
   return (
-    <html lang="en">
+    <html lang={lang} suppressHydrationWarning>
       <body className="antialiased">
         {children}
       </body>
