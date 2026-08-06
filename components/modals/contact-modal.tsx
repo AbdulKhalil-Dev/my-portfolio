@@ -7,9 +7,11 @@ import {
 } from "@/components/ui/dialog";
 
 import { useLanguage } from "@/providers/language-provider";
-import { Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { useLenisModal } from "@/hooks/use-lenis-modal";
 import { sanitizePhone } from "@/lib/utils";
+import { div } from "framer-motion/client";
+import { ShineButton } from "../ui/shine-button";
 
 interface ContactModalProps {
   open: boolean;
@@ -70,7 +72,25 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
               </span>
             </a>
           </div>
+
+          <div className="flex flex-wrap-gap-3 items-center mt-6">
+            {content.social.map((link: {label: string; href: string})=>(
+              <div key={content.label}>
+                <ShineButton
+                href={link.href}
+                className="h-10 px-5"
+                shineClassName="w-4 bg-background/20 dark:bg-background/20">
+                  <span className="relative z-10 flex items-center gap-2 text-xs tracking-widest uppercase font-medium">
+                    {link.label}
+                    <ArrowUpRight className="w-3 h-3 transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1" />
+                  </span>
+                </ShineButton>
+              </div>
+            ))}
+          </div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary-50 to-transparent z-10" />
       </DialogContent>
     </Dialog>
   );

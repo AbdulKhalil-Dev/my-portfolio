@@ -28,3 +28,16 @@ const TRACK_2 = [
 
 const COL_1_IMAGES = [...TRACK_1, ...TRACK_1];
 const COL_2_IMAGES = [...TRACK_2, ...TRACK_2];
+
+export default function Hero() {
+    const { content, dict } = useLanguage();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [contactOpen, setContactOpen] = useState(false);
+
+    const { scrollY } = useScroll();
+    const opacity = useTransform(scrollY, [0, 800], [1, 0]);
+    const scale = useTransform(scrollY, [0, 800], [1, 0.94]);
+    const y = useTransform(scrollY, [0, 800], [0, -150]);
+    const blurValue = useTransform(scrollY, [0, 800], [0, 10]);
+    const filter = useMotionTemplate`blur(${blurValue}px)`;
+}
