@@ -14,8 +14,8 @@ import { ContactModal } from "@/components/modals/contact-modal";
 import InteractiveParticles from "@/components/effects/interactive-particles";
 
 const TRACK_1 = [
-  "/hero-slider/atam-1.jpg",
-  "/hero-slider/atam-2.jfif",
+  "/hero-slider/atam-1.jpeg",
+  "/hero-slider/atam-2.jpg",
   "/hero-slider/khalil-1.jpeg",
   "/hero-slider/khalil-2.png",
   "/hero-slider/makise-1.webp",
@@ -27,8 +27,8 @@ const TRACK_2 = [
   "/hero-slider/makise-1.webp",
   "/hero-slider/khalil-2.png",
   "/hero-slider/khalil-1.jpeg",
-  "/hero-slider/atam-2.jfif",
-  "/hero-slider/atam-1.jpg",
+  "/hero-slider/atam-2.jpg",
+  "/hero-slider/atam-1.jpeg",
 ] as const;
 
 const COL_1_IMAGES = [...TRACK_1, ...TRACK_1];
@@ -122,6 +122,7 @@ export default function Hero() {
 
         <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-background pointer-events-none z-10"></div>
         <div className="absolute inset-0 bg-linear-to-r from-background via-transparent to-background pointer-events-none z-10"></div>
+        </motion.div>
 
         <motion.div
           style={{ opacity, scale, y, filter }}
@@ -144,11 +145,42 @@ export default function Hero() {
                   }}
                 ></motion.div>
               </div>
-
+                  <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-muted-foreground [writing-mode:vertical-lr]">
+                    {dict.scrollDown}
+                  </span>
             </div>
           </div>
-        </motion.div>
+
+          <div className="w-full mt-auto flex flex-col justify-center relative z-20 mix-blend-difference">
+            <div className="overflow-hidden">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl 3xl:text-[140px] font-black  tracking-tighter leading-[0.85] text-foreground uppercase whitespace-nowrap">
+                Khalil
+                  <br />
+                <span className="text-foreground/80">
+                Portfolio
+                </span>
+              </h1>
+            </div>
+          </div>
+
+          <div className="space-y-6 sm:space-y-8 xl:space-y-10">
+            <p className="sm:text-lg 2xl:text-xl text-muted-foreground font-light leading-relaxed max-w-xl mix-blend-difference">
+              {content.about.description}
+            </p>
+
+            <div className="flex flex-col sm:flex-row flex-wrap sm:items-center gap-4">
+              <button onClick={()=> setContactOpen(true)} className="w-fit group relative flex h-12 xl:h-16 cursor-pointer items-center justify-center overflow-hidden rounded-full border-border/50 bg-foreground px-6 xl:px-10 text-background transition-all duration-500 ease-out hover:bg-background hover:border-foreground/30 hover:text-foreground shadow-2xl hover:-translate-y-0.5">
+                  <div className="absolute inset-0 flex h full w-full justify-center -translate-x-full -skew-x-12 group-hover:duration-1000 group-hover:translate-x-full">
+                    <div className="relative h-full w-8 bg-background/20 dark:bg-foreground/10"></div>
+                  </div>
+                  <span className="relative z-10 flex items-center gap-2 xl:gap-3 text-xs xl:text-base font-semibold tracking-[0.15em] uppercase">
+                    {dict.contactMe}
+                  </span>
+              </button>
+            </div>
+          </div>
+
       </motion.div>
-    </section>
+    </section> 
   );
 }
