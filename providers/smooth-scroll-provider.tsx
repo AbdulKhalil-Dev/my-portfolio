@@ -10,7 +10,7 @@ const LenisContext = createContext<Lenis | null>(null);
  */
 export const useLenis = () => useContext(LenisContext);
 
-export default function SmoothScroll({
+export function SmoothScroll({
   children,
 }: {
   children: React.ReactNode;

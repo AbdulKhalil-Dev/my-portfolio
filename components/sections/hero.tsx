@@ -23,12 +23,12 @@ const TRACK_1 = [
 ] as const;
 
 const TRACK_2 = [
-  "/hero-slider/makise-2.jpeg",
-  "/hero-slider/makise-1.webp",
+  "/hero-slider/atam-3.jpg",
+  "/hero-slider/atam-5.avif",
   "/hero-slider/khalil-2.png",
-  "/hero-slider/khalil-1.jpeg",
+  "/hero-slider/atam-4.avif",
   "/hero-slider/atam-2.jpg",
-  "/hero-slider/atam-1.jpeg",
+  "/hero-slider/makise-1.webp",
 ] as const;
 
 const COL_1_IMAGES = [...TRACK_1, ...TRACK_1];
@@ -175,12 +175,22 @@ export default function Hero() {
                   </div>
                   <span className="relative z-10 flex items-center gap-2 xl:gap-3 text-xs xl:text-base font-semibold tracking-[0.15em] uppercase">
                     {dict.contactMe}
+                    <ArrowRight className="w-3.5 xl:w-5 h-3.5 xl:h-5 transition-transform duration-500 group-hover:translate-x-1"/>
+                  </span>
+              </button>
+
+              <button onClick={scrollToProjects} className="w-fit group relative flex h-12 xl:h-16 cursor-pointer items-center justify-center overflow-hidden rounded-full border-border/50 bg-foreground px-6 xl:px-10 text-background transition-all duration-500 ease-out hover:bg-background hover:border-foreground/30 hover:text-foreground shadow-2xl hover:-translate-y-0.5">
+                  <span className="relative z-10 flex items-center gap-2 xl:gap-3 text-xs xl:text-base font-semibold tracking-[0.15em] uppercase">
+                    <Mouse className="w-3.5 xl:w-5 h-3.5 xl:h-5 transition-transform duration-500 group-hover:translate-x-1"/>
+                    {dict.exploreProjects}
                   </span>
               </button>
             </div>
           </div>
 
       </motion.div>
+
+      <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
     </section> 
   );
 }

@@ -1,9 +1,12 @@
-import SmoothScroll from "@/providers/smooth-scroll-provider";
+import type { Metadata } from "next";
+import { Inter, Syne } from "next/font/google";
+import "../globals.css";
+import { SmoothScroll } from "@/providers/smooth-scroll-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { LanguageProvider } from "@/providers/language-provider";
-import { Preloader } from "@/components/layout/preloader";
-import CustomCursor from "@/components/layout/custom-cursor";
-import Navbar from "@/components/layout/navbar";
+import { Preloader } from "../../components/layout/preloader";
+// import { CustomCursor } from "@/components/layout/custom-cursor";
+import { Navbar } from "@/components/layout/navbar";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { getDictionary, getContents, getSharedData } from "@/lib/loaders";
@@ -35,13 +38,13 @@ export default async function LangLayout({
     <LanguageProvider lang={lang} dictionary={dictionary} contents={contents}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
-        enableSystem={false}
+        defaultTheme="system"
+        enableSystem={true}
       >
         {/* <CustomCursor /> */}
         <Preloader />
         <SmoothScroll>
-          {/* <Navbar /> */}
+          <Navbar />
           {children}
         </SmoothScroll>
       </ThemeProvider>
