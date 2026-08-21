@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useMotionTemplate, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "@/components/widgets/language-switcher";
 import ThemeSwitcher from "@/components/widgets/theme-switcher";
@@ -13,24 +13,44 @@ export function Navbar() {
   const { dict } = useLanguage();
   const lenis = useLenis();
   const [isMobileMenuOpen, setIsMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const [dimensions, setDimensions] = useState({
     screenWidth: 1920,
     containerWidth: 1280,
     scrollHeight: 800,
   });
+
   const dummyRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
 
   const { scrollY } = useScroll();
 
+  useEffect(() => {
+    setMounted(true);
+    const updateDimensions = () => {
+      setDimensions({
+        screenWidth: window.innerWidth,
+        scrollHeight: window.innerHeight,
+        containerWidth: dummyRef.current ? dummyRef.current.getBoundingClientRect().width : 1280,
+      });
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   const bgOpacity = useTransform(scrollY, [0, dimensions.scrollHeight], [0, 1]);
-  const backdropBlur = useTransform(scrollY, [0, dimensions.scrollHeight], [0, 16]);
-  const backdropFilter = useMotionTemplate`blur(${backdropBlur}px)`;
+  const blurVal = useTransform(scrollY, [0, dimensions.scrollHeight], [0, 16]);
+  const backdropFilter = useTransform(blurVal, (v) => `blur(${v}px)`);
 
   const py = useTransform(scrollY, [0, dimensions.scrollHeight], [24, 12]);
 
-  const startWidth = Math.max(dimensions.screenWidth, dimensions.containerWidth);
+  const startWidth = useMemo(
+    () => Math.max(dimensions.screenWidth, dimensions.containerWidth),
+    [dimensions.screenWidth, dimensions.containerWidth]
+  );
   const navMaxWidth = useTransform(scrollY, [0, dimensions.scrollHeight], [startWidth, dimensions.containerWidth]);
 
   const navLinks = useMemo(
@@ -44,23 +64,6 @@ export function Navbar() {
     ],
     [dict.nav]
   );
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const updateDimensions = () => {
-      setDimensions({
-        screenWidth: window.innerWidth,
-        scrollHeight: window.innerHeight,
-        containerWidth: dummyRef.current ? dummyRef.current.getBoundingClientRect().width : 1280,
-      });
-    };
-
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
 
   useEffect(() => {
     const overflowVal = isMobileMenuOpen ? "hidden" : "";
@@ -88,35 +91,31 @@ export function Navbar() {
       const cleanId = targetId.replace("#", "");
       const elem = document.getElementById(cleanId);
 
-      setTimeout(() => {
-        const currentPy = py.get();
-        const currentHeight = headerRef.current ? headerRef.current.getBoundingClientRect().height : 80;
-        const heightDifference = (currentPy - 12) * 2;
-        const navbarHeight = Math.max(currentHeight - heightDifference, 0);
+      // Instant measurement before state transitions
+      const currentHeaderHeight = headerRef.current ? headerRef.current.offsetHeight : 80;
+      const isDesktop = window.innerWidth >= 1280;
+      const isAboutOnDesktop = cleanId === "about" && isDesktop;
+      const offset = cleanId === "home" ? 0 : isAboutOnDesktop ? 0 : -currentHeaderHeight;
 
-        const isDesktop = dimensions.screenWidth >= 1280;
-        const isAboutOnDesktop = cleanId === "about" && isDesktop;
-
-        if (lenis) {
-          lenis.scrollTo(cleanId === "home" ? 0 : elem!, {
-            offset: cleanId === "home" ? 0 : isAboutOnDesktop ? 0 : -navbarHeight,
-            duration: 1.5,
+      if (lenis) {
+        lenis.scrollTo(cleanId === "home" ? 0 : elem!, {
+          offset,
+          duration: 1.2,
+        });
+      } else {
+        if (cleanId === "home") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else if (elem) {
+          const rect = elem.getBoundingClientRect();
+          const offsetPosition = rect.top + window.scrollY + offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
           });
-        } else {
-          if (cleanId === "home") {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          } else if (elem) {
-            const rect = elem.getBoundingClientRect();
-            const offsetPosition = rect.top + window.scrollY - (isAboutOnDesktop ? 0 : navbarHeight);
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
-            });
-          }
         }
-      }, 100);
+      }
     },
-    [lenis, dimensions.screenWidth, py]
+    [lenis]
   );
 
   return (
@@ -131,8 +130,8 @@ export function Navbar() {
       <motion.div
         style={{
           opacity: bgOpacity,
-          backdropFilter,
-          WebkitBackdropFilter: backdropFilter,
+          backdropFilter: mounted ? backdropFilter : "none",
+          WebkitBackdropFilter: mounted ? backdropFilter : "none",
         }}
         className="absolute inset-0 bg-background/80 dark:bg-background/80 border-b border-border/40 -z-10 pointer-events-none"
       />
@@ -157,7 +156,7 @@ export function Navbar() {
         <div className="hidden xl:flex items-center gap-8">
           <ul className="flex items-center gap-6">
             {navLinks.map((link) => (
-              <li key={link.name}>
+              <li key={link.href}>
                 <Link
                   href={`#${link.href}`}
                   onClick={(e) => scrollToSection(e, link.href)}
@@ -201,7 +200,7 @@ export function Navbar() {
           >
             <ul className="flex flex-col items-center gap-6 text-center">
               {navLinks.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={`#${link.href}`}
                     onClick={(e) => scrollToSection(e, link.href)}
