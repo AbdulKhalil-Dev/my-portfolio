@@ -1,8 +1,8 @@
 {
     "contact": {
         "location": "Pakistan",
-        "email": "your-email@gmail.com",
-        "phone": "+923000000000"
+        "email": "khalil.codelab@gmail.com",
+        "phone": "+923004541151"
     },
     "social": [
         {
@@ -11,11 +11,11 @@
         },
         {
             "label": "LinkedIn",
-            "href": "https://www.linkedin.com/in/your-profile"
+            "href": "https://www.linkedin.com/in/abdulkhalil1122"
         },
         {
             "label": "Fiverr",
-            "href": "https://www.fiverr.com/your-username"
+            "href": "https://www.fiverr.com/khalilwebdev"
         }
     ],
     "stack": {

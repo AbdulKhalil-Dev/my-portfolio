@@ -8,14 +8,10 @@ interface HomePageProps {
 }
 
 export default async function Home({ params }: HomePageProps) {
-  const { lang } = await params
-
   return (
     <>
       <ScrollProgress />
-      <main className="bg-background relative">
-        <Hero />
-      </main>
+      <Hero />
     </>
   )
 }
