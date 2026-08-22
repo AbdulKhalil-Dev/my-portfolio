@@ -60,9 +60,11 @@ export default function Hero() {
       id="home"
     >
       <InteractiveParticles />
+      
+      {/* FIXED: Removed mix-blend-luminosity which created the big white block in light mode */}
       <motion.div
         style={{ opacity }}
-        className="absolute top-0 right-6 sm:right-12 md:right-10 lg:right-24 xl:right-36 2xl:right-48 bottom-0 h-full w-55 sm:w-65 md:w-85 lg:w-100 xl:w-110 2xl:w-120 flex gap-3 sm:gap-4 px-2 overflow-hidden z-5 pointer-events-none select-none opacity-[0.22] dark:opacity-[0.28] mix-blend-luminosity"
+        className="absolute top-0 right-6 sm:right-12 md:right-10 lg:right-24 xl:right-36 2xl:right-48 bottom-0 h-full w-55 sm:w-65 md:w-85 lg:w-100 xl:w-110 2xl:w-120 flex gap-3 sm:gap-4 px-2 overflow-hidden z-5 pointer-events-none select-none opacity-20 dark:opacity-30"
       >
         <div className="max-hd:hidden flex-1 h-full overflow-hidden relative">
           <motion.div
@@ -85,7 +87,7 @@ export default function Hero() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
-                  className="object-cover object-center grayscale contrast-[1.08] brightness-[0.85] dark:brightness-[0.7]"
+                  className="object-cover object-center grayscale contrast-[1.08] brightness-90 dark:brightness-[0.7]"
                 />
               </div>
             ))}
@@ -113,15 +115,16 @@ export default function Hero() {
                   fill
                   sizes="(max-width: 640px) 45vw, (max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
-                  className="object-cover object-center grayscale contrast-[1.08] brightness-[0.85] dark:brightness-[0.7]"
+                  className="object-cover object-center grayscale contrast-[1.08] brightness-90 dark:brightness-[0.7]"
                 />
               </div>
             ))}
           </motion.div>
         </div>
 
+        {/* Dynamic theme fade overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background pointer-events-none z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background pointer-events-none z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent pointer-events-none z-10"></div>
       </motion.div>
 
       <motion.div
@@ -129,7 +132,7 @@ export default function Hero() {
         className="relative z-20 flex-1 flex-col gap-6 sm:gap-8 xl:gap-12 justify-end w-full h-full will-[opacity,transform,filter]"
       >
         <div className="flex justify-between items-start w-full">
-          <div className="text-4xl sm:text-6xl text-foreground/10 grunge-text rotate-90 pointer-events-none select-none">
+          <div className="text-4xl sm:text-6xl text-foreground/20 dark:text-foreground/10 grunge-text rotate-90 pointer-events-none select-none">
             {"/*/*/"}
           </div>
 
@@ -151,13 +154,12 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Fixed: Removed mix-blend-difference */}
         <div className="w-full mt-auto flex flex-col justify-center relative z-20">
           <div className="overflow-hidden">
             <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl 3xl:text-[140px] font-black tracking-tighter leading-[0.85] text-foreground uppercase whitespace-nowrap">
               Khalil
               <br />
-              <span className="text-foreground/80">
+              <span className="text-foreground/60 dark:text-foreground/80">
                 Portfolio
               </span>
             </h1>
@@ -165,7 +167,6 @@ export default function Hero() {
         </div>
 
         <div className="space-y-6 sm:space-y-8 xl:space-y-10">
-          {/* Fixed: Removed mix-blend-difference */}
           <p className="sm:text-lg 2xl:text-xl text-muted-foreground font-light leading-relaxed max-w-xl">
             {content.about.description}
           </p>

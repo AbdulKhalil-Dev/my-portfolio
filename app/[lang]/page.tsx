@@ -1,7 +1,15 @@
 import ScrollProgress from '@/components/layout/scroll-progress'
 import Hero from '@/components/sections/hero'
 
-export default function Home() {
+interface HomePageProps {
+  params: Promise<{
+    lang: string
+  }>
+}
+
+export default async function Home({ params }: HomePageProps) {
+  const { lang } = await params
+
   return (
     <>
       <ScrollProgress />
