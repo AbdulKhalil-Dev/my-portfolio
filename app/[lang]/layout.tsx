@@ -1,7 +1,7 @@
 import { LanguageProvider } from "@/providers/language-provider";
 import { SmoothScroll } from "@/providers/smooth-scroll-provider";
 import { Preloader } from "@/components/layout/preloader";
-// import { CustomCursor } from "@/components/layout/custom-cursor";
+import { CustomCursor } from "@/components/layout/custom-cursor";
 import { Navbar } from "@/components/layout/navbar";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
@@ -37,7 +37,7 @@ export default async function LangLayout({
       contents={contents}
       shared={shared}
     >
-      {/* <CustomCursor /> */}
+      <CustomCursor />
       <Preloader />
       <SmoothScroll>
         <Navbar />
