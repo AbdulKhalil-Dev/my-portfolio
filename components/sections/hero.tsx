@@ -87,8 +87,7 @@ export default function Hero() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
-                  className="object-cover object-center grayscale contrast-[1.08] brightness-90 dark:brightness-[0.7]"
-                />
+                  className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 contrast-[1.08] brightness-90 dark:brightness-[0.7]" />
               </div>
             ))}
           </motion.div>
@@ -115,8 +114,8 @@ export default function Hero() {
                   fill
                   sizes="(max-width: 640px) 45vw, (max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
-                  className="object-cover object-center grayscale contrast-[1.08] brightness-90 dark:brightness-[0.7]"
-                />
+                  className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 contrast-[1.08] brightness-90 dark:brightness-[0.7]"
+                  />
               </div>
             ))}
           </motion.div>

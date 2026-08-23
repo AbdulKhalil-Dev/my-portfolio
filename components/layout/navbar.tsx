@@ -52,18 +52,17 @@ export function Navbar() {
     [dimensions.screenWidth, dimensions.containerWidth]
   );
   const navMaxWidth = useTransform(scrollY, [0, dimensions.scrollHeight], [startWidth, dimensions.containerWidth]);
-
   const navLinks = useMemo(
-    () => [
-      { name: dict.nav.about, href: "about" },
-      { name: dict.nav.stack, href: "stack" },
-      { name: dict.nav.home, href: "home" },
-      { name: dict.nav.roadmap, href: "roadmap" },
-      { name: dict.nav.contact, href: "contact" },
-      { name: dict.nav.projects, href: "projects" },
-    ],
-    [dict.nav]
-  );
+  () => [
+    { name: dict.nav.home, href: "home" },
+    { name: dict.nav.about, href: "about" },
+    { name: dict.nav.stack, href: "stack" },
+    { name: dict.nav.roadmap, href: "roadmap" },
+    { name: dict.nav.projects, href: "projects" },
+    { name: dict.nav.contact, href: "contact" },
+  ],
+  [dict.nav]
+);
 
   useEffect(() => {
     const overflowVal = isMobileMenuOpen ? "hidden" : "";
