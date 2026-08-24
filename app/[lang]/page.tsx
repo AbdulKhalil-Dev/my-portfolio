@@ -1,6 +1,7 @@
 import ScrollProgress from '@/components/layout/scroll-progress'
 import Hero from '@/components/sections/hero'
 import About from '@/components/sections/about'
+import ManifestoFlow from '@/components/effects/mainfesto-flow'
 
 interface HomePageProps {
   params: Promise<{
@@ -18,6 +19,8 @@ export default async function Home({ params }: HomePageProps) {
         <section id="about">
           <About />
         </section>
+
+        <ManifestoFlow />
       </div>
     </>
   )
