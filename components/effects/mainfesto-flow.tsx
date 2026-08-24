@@ -21,6 +21,7 @@ export default function ManifestoFlow({
         key={`${keyPrefix}-${index}`}
         className="flex items-center gap-8 xl:gap-16"
       >
+        <Separator />
         <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase text-foreground/25 whitespace-nowrap">
           {item}
         </span>
