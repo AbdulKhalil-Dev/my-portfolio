@@ -95,7 +95,7 @@ export function CustomCursor() {
     >
       <motion.div
         className={cn(
-          "rounded-full flex items-center justify-center transition-colors duration-300",
+          "relative rounded-full flex items-center justify-center transition-colors duration-300",
           isHovering ? "bg-white" : "bg-transparent border border-white/50",
         )}
         animate={{
@@ -103,7 +103,18 @@ export function CustomCursor() {
           height: isHovering ? 64 : 32,
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-      ></motion.div>
+      >
+        <motion.div
+          className="rounded-full bg-white"
+          animate={{
+            width: 4,
+            height: 4,
+            opacity: isHovering ? 0 : 1,
+            scale: isHovering ? 0 : 1,
+          }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+        />
+      </motion.div>
     </motion.div>
   );
 }
