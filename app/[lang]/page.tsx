@@ -2,6 +2,7 @@ import ScrollProgress from '@/components/layout/scroll-progress'
 import Hero from '@/components/sections/hero'
 import About from '@/components/sections/about'
 import Stack from '@/components/sections/stack'
+import Projects from '@/components/sections/projects'
 import ManifestoFlow from '@/components/effects/mainfesto-flow'
 
 interface HomePageProps {
@@ -25,6 +26,12 @@ export default async function Home({ params }: HomePageProps) {
 
         <section id='stack'>
           <Stack />
+        </section>
+
+        <ManifestoFlow reverse />
+
+        <section id='project'>
+          <Projects />
         </section>
       </div>
     </>
