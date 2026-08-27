@@ -37,7 +37,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
             {project.category} • {project.year}
           </span>
           <div className="flex items-center gap-1">
-            {/* repo ki jagah githubUrl */}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -56,7 +55,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
                 </svg>
               </a>
             )}
-            {/* demo ki jagah liveUrl */}
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
