@@ -1,82 +1,44 @@
 {
-    "contact": {
-        "location": "Pakistan",
-        "email": "khalil.codelab@gmail.com",
-        "phone": "+923004541151"
+  "contact": {
+    "location": "Pakistan",
+    "email": "khalil.codelab@gmail.com",
+    "phone": "+923004541151"
+  },
+  "social": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/AbdulKhalil-Dev"
     },
-    "social": [
-        {
-            "label": "GitHub",
-            "href": "https://github.com/AbdulKhalil-Dev"
-        },
-        {
-            "label": "LinkedIn",
-            "href": "https://www.linkedin.com/in/abdulkhalil1122"
-        },
-        {
-            "label": "Fiverr",
-            "href": "https://www.fiverr.com/khalilwebdev"
-        }
-    ],
-    "stack": {
-        "frontend": [
-            {
-                "name": "React",
-                "icon": "/stack/react.svg",
-                "featured": true
-            },
-            {
-                "name": "Next.js",
-                "icon": "/stack/nextjs.svg",
-                "featured": true
-            },
-            {
-                "name": "Tailwind CSS",
-                "icon": "/stack/tailwindcss.svg",
-                "featured": true
-            },
-            {
-                "name": "JavaScript",
-                "icon": "/stack/javascript.svg",
-                "featured": true
-            },
-            {
-                "name": "Framer Motion",
-                "icon": "/stack/framermotion.svg"
-            },
-            {
-                "name": "TypeScript",
-                "icon": "/stack/typescript.svg"
-            },
-            {
-                "name": "HTML5",
-                "icon": "/stack/html5.svg"
-            },
-            {
-                "name": "CSS3",
-                "icon": "/stack/css3.svg"
-            }
-        ],
-        "backend": [
-            {
-                "name": "Node.js",
-                "icon": "/stack/nodejs.svg"
-            }
-        ],
-        "database": [],
-        "tools": [
-            {
-                "name": "Git",
-                "icon": "/stack/git.svg"
-            },
-            {
-                "name": "GitHub",
-                "icon": "/stack/github.svg"
-            },
-            {
-                "name": "Vercel",
-                "icon": "/stack/vercel.svg"
-            }
-        ]
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/abdulkhalil1122"
+    },
+    {
+      "label": "Fiverr",
+      "href": "https://www.fiverr.com/khalilwebdev"
     }
+  ],
+  "stack": {
+    "frontend": [
+      { "name": "React", "icon": "/stack/react.svg", "featured": true },
+      { "name": "Next.js", "icon": "/stack/nextjs.svg", "featured": true },
+      { "name": "Tailwind CSS", "icon": "/stack/tailwindcss.svg", "featured": true },
+      { "name": "JavaScript", "icon": "/stack/javascript.svg", "featured": true },
+      { "name": "Framer Motion", "icon": "/stack/framermotion.svg" },
+      { "name": "TypeScript", "icon": "/stack/typescript.svg" },
+      { "name": "HTML5", "icon": "/stack/html5.svg" },
+      { "name": "CSS3", "icon": "/stack/css3.svg" }
+    ],
+    "backend": [
+      { "name": "Node.js", "icon": "/stack/nodejs.svg" }
+    ],
+    "database": [
+      { "name": "MongoDB", "icon": "/stack/mongodb.svg" }
+    ],
+    "tools": [
+      { "name": "Git", "icon": "/stack/git.svg" },
+      { "name": "GitHub", "icon": "/stack/github.svg" },
+      { "name": "Vercel", "icon": "/stack/vercel.svg" }
+    ]
+  }
 }

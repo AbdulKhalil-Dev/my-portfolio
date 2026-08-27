@@ -60,7 +60,7 @@ export default function Hero() {
       id="home"
     >
       <InteractiveParticles />
-      
+
       {/* FIXED: Removed mix-blend-luminosity which created the big white block in light mode */}
       <motion.div
         style={{ opacity }}
@@ -87,7 +87,8 @@ export default function Hero() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
-                  className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 contrast-[1.08] brightness-90 dark:brightness-[0.7]" />
+                  className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 contrast-[1.08] brightness-90 dark:brightness-[0.7]"
+                />
               </div>
             ))}
           </motion.div>
@@ -115,7 +116,7 @@ export default function Hero() {
                   sizes="(max-width: 640px) 45vw, (max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
                   className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 contrast-[1.08] brightness-90 dark:brightness-[0.7]"
-                  />
+                />
               </div>
             ))}
           </motion.div>
@@ -167,9 +168,9 @@ export default function Hero() {
 
         <div className="space-y-6 sm:space-y-8 xl:space-y-10">
           <p className="sm:text-lg 2xl:text-xl text-muted-foreground font-light leading-relaxed max-w-xl">
-            {content.about.description}
+            {content?.about?.description ||
+              "Frontend Web Developer based in Pakistan."}
           </p>
-
           <div className="flex flex-col sm:flex-row flex-wrap sm:items-center gap-4">
             <button
               onClick={() => setContactOpen(true)}
