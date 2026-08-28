@@ -134,6 +134,10 @@
     outline-color: var(--ring);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* Hide scrollbars */
   ::-webkit-scrollbar,
   *::-webkit-scrollbar {
