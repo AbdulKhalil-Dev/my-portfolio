@@ -106,7 +106,7 @@ export default function Roadmap() {
                   {/* Top Metadata */}
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-cyan-400">
+                      <span className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400">
                         {item.step}
                       </span>
                       <span className="text-xs text-muted-foreground">|</span>
@@ -118,9 +118,9 @@ export default function Roadmap() {
                     <span
                       className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
                         item.status === "completed"
-                          ? "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20"
+                          ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
                           : item.status === "in-progress"
-                          ? "bg-amber-500/10 text-amber-500 border border-amber-500/20"
+                          ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
                           : "bg-muted text-muted-foreground border border-border"
                       }`}
                     >
@@ -129,7 +129,7 @@ export default function Roadmap() {
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-cyan-400 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-5">
@@ -141,7 +141,7 @@ export default function Roadmap() {
                     {item.skills?.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-secondary/80 text-secondary-foreground border border-border/50 transition-colors hover:bg-cyan-500/10 hover:text-cyan-400"
+                        className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-secondary/80 text-secondary-foreground border border-border/50 transition-colors hover:bg-cyan-500/10 hover:text-cyan-600 dark:hover:text-cyan-400"
                       >
                         {skill}
                       </span>

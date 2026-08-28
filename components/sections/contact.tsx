@@ -1,127 +1,3 @@
-// "use client";
-
-// import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
-// import { useLanguage } from "@/providers/language-provider";
-// import { BlurReveal } from "@/components/effects/blur-reveal";
-// import { sanitizePhone } from "@/lib/utils";
-// import { ShineButton } from "@/components/ui/shine-button";
-
-// export default function Contact() {
-//   const { content, dict } = useLanguage();
-
-//   const contactData = content?.contact;
-//   const socialLinks = content?.social || [];
-
-//   return (
-//     <section
-//       id="contact"
-//       className="relative pt-24 md:pt-32 xl:pt-40 pb-24 bg-background overflow-hidden border-t border-border/50"
-//     >
-//       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
-
-//       <div className="container mx-auto px-4 md:px-8 relative z-10">
-//         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          
-//           {/* Section Header */}
-//           <div className="flex flex-col items-center gap-4 mb-12 md:mb-16">
-//             <BlurReveal>
-//               <span className="title-counter">[005]</span>
-//             </BlurReveal>
-
-//             <BlurReveal>
-//               <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-foreground">
-//                 {dict?.title?.contact || "Get In Touch"}
-//               </h2>
-//             </BlurReveal>
-
-//             <BlurReveal>
-//               <p className="text-sm sm:text-base md:text-lg mt-2 max-w-xl text-muted-foreground font-light leading-relaxed">
-//                 {dict?.contactIntroText ||
-//                   "Have a project in mind or want to discuss frontend collaboration? Feel free to reach out."}
-//               </p>
-//             </BlurReveal>
-
-//             {contactData?.location && (
-//               <BlurReveal>
-//                 <div className="inline-flex items-center gap-2 mt-2 px-4 py-1.5 rounded-full bg-card border border-border/80 text-xs font-mono text-foreground/80 shadow-sm">
-//                   <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-//                   <span>Based in {contactData.location}</span>
-//                 </div>
-//               </BlurReveal>
-//             )}
-//           </div>
-
-//           {/* Primary Action Buttons */}
-//           {contactData && (
-//             <BlurReveal className="w-full max-w-xl mb-12">
-//               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                
-//                 {/* Mail Shine Button with Gray Background & Subtle Hover */}
-//                 {contactData.email && (
-//                   <ShineButton
-//                     href={`mailto:${contactData.email}`}
-//                     target="_self"
-//                     className="w-full sm:w-auto flex-1 px-8 py-4 text-sm font-semibold rounded-2xl border border-border/80 bg-card/60 text-foreground hover:bg-muted hover:border-muted-foreground/30 hover:text-foreground transition-all duration-300 shadow-sm"
-//                   >
-//                     <span className="flex items-center justify-center gap-3">
-//                       <Mail className="w-4 h-4 text-muted-foreground" />
-//                       <span className="truncate">{contactData.email}</span>
-//                       <ArrowUpRight className="w-4 h-4 text-muted-foreground" />
-//                     </span>
-//                   </ShineButton>
-//                 )}
-
-//                 {/* Phone Link Button */}
-//                 {contactData.phone && (
-//                   <a
-//                     href={`tel:${sanitizePhone(contactData.phone)}`}
-//                     className="w-full sm:w-auto flex-1 group"
-//                   >
-//                     <div className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-2xl border border-border/80 bg-card/60 backdrop-blur-md hover:bg-muted hover:border-muted-foreground/30 text-foreground text-sm font-semibold transition-all duration-300 shadow-sm">
-//                       <Phone className="w-4 h-4 text-muted-foreground" />
-//                       <span>{contactData.phone}</span>
-//                       <ArrowUpRight className="w-4 h-4 opacity-70 text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-//                     </div>
-//                   </a>
-//                 )}
-//               </div>
-//             </BlurReveal>
-//           )}
-
-//           {/* Social Links Row */}
-//           {socialLinks.length > 0 && (
-//             <BlurReveal className="w-full max-w-md">
-//               <div className="flex flex-col space-y-3">
-//                 <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-//                   Connect on Platforms
-//                 </span>
-//                 <div className="flex flex-wrap items-center justify-center gap-3">
-//                   {socialLinks.map((item: { label: string; href: string }, idx: number) => (
-//                     <a
-//                       key={idx}
-//                       href={item.href}
-//                       target="_blank"
-//                       rel="noopener noreferrer"
-//                       className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border/60 bg-card/40 hover:bg-muted hover:border-muted-foreground/30 text-xs font-medium text-foreground transition-all duration-200 hover:scale-105"
-//                     >
-//                       <span>{item.label}</span>
-//                       <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground" />
-//                     </a>
-//                   ))}
-//                 </div>
-//               </div>
-//             </BlurReveal>
-//           )}
-
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -137,10 +13,6 @@ export default function Contact() {
   const contactData = content?.contact;
   const socialLinks = content?.social || [];
 
-  // Live clock — only starts after mount so server/client markup match
-  // (rendering `new Date()` directly during SSR causes a hydration
-  // mismatch, since the server's clock and the client's first paint
-  // are never exactly the same instant).
   const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
@@ -152,27 +24,29 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative pt-24 md:pt-32 xl:pt-40 pb-24 bg-background overflow-hidden border-t border-border/50"
+      className="relative pt-20 sm:pt-24 md:pt-32 xl:pt-40 pb-12 sm:pb-24 bg-background overflow-hidden border-t border-border/50"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-cyan-500/5 dark:bg-cyan-500/15 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
 
           {/* Section Header */}
-          <div className="flex flex-col items-center gap-4 mb-12 md:mb-16">
+          <div className="flex flex-col items-center gap-3 sm:gap-4 mb-10 sm:mb-16">
             <BlurReveal>
-              <span className="title-counter">[005]</span>
+              <span className="text-[11px] sm:text-xs font-mono text-cyan-600 dark:text-cyan-400 font-semibold tracking-widest uppercase block">
+                [005]
+              </span>
             </BlurReveal>
 
             <BlurReveal>
-              <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-foreground">
+              <h2 className="text-3xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-foreground">
                 {dict?.title?.contact || "Get In Touch"}
               </h2>
             </BlurReveal>
 
             <BlurReveal>
-              <p className="text-sm sm:text-base md:text-lg mt-2 max-w-xl text-muted-foreground font-light leading-relaxed">
+              <p className="text-xs sm:text-base md:text-lg mt-2 max-w-xl text-slate-700 dark:text-slate-300 font-normal dark:font-light leading-relaxed px-2">
                 {dict?.contactIntroText ||
                   "Have a project in mind or want to discuss frontend collaboration? Feel free to reach out."}
               </p>
@@ -180,8 +54,8 @@ export default function Contact() {
 
             {contactData?.location && (
               <BlurReveal>
-                <div className="inline-flex items-center gap-2 mt-2 px-4 py-1.5 rounded-full bg-card border border-border/80 text-xs font-mono text-foreground/80 shadow-sm">
-                  <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+                <div className="inline-flex items-center gap-2 mt-2 px-3.5 py-1.5 rounded-full bg-card border border-border/80 text-[11px] sm:text-xs font-mono text-foreground/80 shadow-sm">
+                  <MapPin className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                   <span>Based in {contactData.location}</span>
                 </div>
               </BlurReveal>
@@ -190,19 +64,19 @@ export default function Contact() {
 
           {/* Primary Action Buttons */}
           {contactData && (
-            <BlurReveal className="w-full max-w-xl mb-12">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <BlurReveal className="w-full max-w-xl mb-10 sm:mb-12">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
 
                 {contactData.email && (
                   <ShineButton
                     href={`mailto:${contactData.email}`}
                     target="_self"
-                    className="w-full sm:w-auto flex-1 px-8 py-4 text-sm font-semibold rounded-2xl border border-border/80 bg-card/60 text-foreground hover:bg-muted hover:border-muted-foreground/30 hover:text-foreground transition-all duration-300 shadow-sm"
+                    className="w-full sm:w-auto flex-1 px-5 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold rounded-2xl border border-border/80 bg-card text-foreground hover:bg-muted transition-all duration-300 shadow-sm"
                   >
-                    <span className="flex items-center justify-center gap-3">
-                      <Mail className="w-4 h-4 text-muted-foreground" />
+                    <span className="flex items-center justify-center gap-2.5 sm:gap-3">
+                      <Mail className="w-4 h-4 text-muted-foreground shrink-0" />
                       <span className="truncate">{contactData.email}</span>
-                      <ArrowUpRight className="w-4 h-4 text-muted-foreground" />
+                      <ArrowUpRight className="w-4 h-4 text-muted-foreground shrink-0" />
                     </span>
                   </ShineButton>
                 )}
@@ -212,10 +86,10 @@ export default function Contact() {
                     href={`tel:${sanitizePhone(contactData.phone)}`}
                     className="w-full sm:w-auto flex-1 group"
                   >
-                    <div className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-2xl border border-border/80 bg-card/60 backdrop-blur-md hover:bg-muted hover:border-muted-foreground/30 text-foreground text-sm font-semibold transition-all duration-300 shadow-sm">
-                      <Phone className="w-4 h-4 text-muted-foreground" />
+                    <div className="w-full flex items-center justify-center gap-2.5 sm:gap-3 px-5 sm:px-8 py-3.5 sm:py-4 rounded-2xl border border-border/80 bg-card backdrop-blur-md hover:bg-muted text-foreground text-xs sm:text-sm font-semibold transition-all duration-300 shadow-sm">
+                      <Phone className="w-4 h-4 text-muted-foreground shrink-0" />
                       <span>{contactData.phone}</span>
-                      <ArrowUpRight className="w-4 h-4 opacity-70 text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      <ArrowUpRight className="w-4 h-4 opacity-70 text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
                     </div>
                   </a>
                 )}
@@ -225,19 +99,19 @@ export default function Contact() {
 
           {/* Social Links Row */}
           {socialLinks.length > 0 && (
-            <BlurReveal className="w-full max-w-md mb-16">
+            <BlurReveal className="w-full max-w-md mb-12 sm:mb-16">
               <div className="flex flex-col space-y-3">
-                <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                <span className="text-[10px] sm:text-xs font-mono text-slate-500 dark:text-muted-foreground uppercase tracking-widest font-medium">
                   Connect on Platforms
                 </span>
-                <div className="flex flex-wrap items-center justify-center gap-3">
+                <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
                   {socialLinks.map((item: { label: string; href: string }, idx: number) => (
                     <a
                       key={idx}
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border/60 bg-card/40 hover:bg-muted hover:border-muted-foreground/30 text-xs font-medium text-foreground transition-all duration-200 hover:scale-105"
+                      className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border border-border/80 bg-card hover:bg-muted text-xs font-medium text-foreground transition-all duration-200 hover:scale-105 shadow-sm"
                     >
                       <span>{item.label}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground" />
@@ -248,17 +122,21 @@ export default function Contact() {
             </BlurReveal>
           )}
 
-          {/* Footer */}
-          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 pt-10 border-t border-border/40">
+          {/* Responsive Footer */}
+          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 pt-8 sm:pt-10 border-t border-border/40">
             {/* Copyright Section */}
-            <div className="text-sm font-mono tracking-widest text-muted-foreground uppercase flex items-center gap-2">
-              <span>&copy; {now ? now.getFullYear() : new Date().getFullYear()}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-              <span>Khalil. {dict?.allRightsReserved || "All rights reserved."}</span>
+            <div className="text-[11px] sm:text-xs md:text-sm font-mono tracking-wider text-slate-500 dark:text-muted-foreground uppercase flex items-center justify-center gap-2 flex-wrap text-center font-medium">
+              <span className="whitespace-nowrap">
+                &copy; {now ? now.getFullYear() : new Date().getFullYear()} Khalil.
+              </span>
+              <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+              <span className="whitespace-nowrap">
+                {dict?.allRightsReserved || "All rights reserved."}
+              </span>
             </div>
 
             {/* Live Time & Location */}
-            <div className="text-sm font-mono tracking-widest text-muted-foreground uppercase flex items-center gap-2">
+            <div className="text-[11px] sm:text-xs md:text-sm font-mono tracking-wider text-slate-500 dark:text-muted-foreground uppercase flex items-center justify-center gap-2 whitespace-nowrap font-medium">
               <span>{contactData?.location || "PAKISTAN"}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span suppressHydrationWarning>

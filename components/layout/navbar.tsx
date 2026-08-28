@@ -52,17 +52,18 @@ export function Navbar() {
     [dimensions.screenWidth, dimensions.containerWidth]
   );
   const navMaxWidth = useTransform(scrollY, [0, dimensions.scrollHeight], [startWidth, dimensions.containerWidth]);
+
   const navLinks = useMemo(
-  () => [
-    { name: dict.nav.home, href: "home" },
-    { name: dict.nav.about, href: "about" },
-    { name: dict.nav.stack, href: "stack" },
-    { name: dict.nav.roadmap, href: "roadmap" },
-    { name: dict.nav.projects, href: "projects" },
-    { name: dict.nav.contact, href: "contact" },
-  ],
-  [dict.nav]
-);
+    () => [
+      { name: dict.nav.home, href: "home" },
+      { name: dict.nav.about, href: "about" },
+      { name: dict.nav.stack, href: "stack" },
+      { name: dict.nav.roadmap, href: "roadmap" },
+      { name: dict.nav.projects, href: "projects" },
+      { name: dict.nav.contact, href: "contact" },
+    ],
+    [dict.nav]
+  );
 
   useEffect(() => {
     const overflowVal = isMobileMenuOpen ? "hidden" : "";
@@ -87,23 +88,36 @@ export function Navbar() {
       e.preventDefault();
       setIsMobileOpen(false);
 
-      const cleanId = targetId.replace("#", "");
-      const elem = document.getElementById(cleanId);
-
+      const cleanId = targetId.replace("#", "").trim();
       const currentHeaderHeight = headerRef.current ? headerRef.current.offsetHeight : 80;
       const isDesktop = window.innerWidth >= 1280;
       const isAboutOnDesktop = cleanId === "about" && isDesktop;
       const offset = cleanId === "home" ? 0 : isAboutOnDesktop ? 0 : -currentHeaderHeight;
 
-      if (lenis) {
-        lenis.scrollTo(cleanId === "home" ? 0 : elem!, {
-          offset,
-          duration: 1.2,
-        });
-      } else {
+      // Mobile drawer close hone aur scroll unfreeze hone ka wait
+      setTimeout(() => {
         if (cleanId === "home") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        } else if (elem) {
+          if (lenis) {
+            lenis.scrollTo(0, { duration: 1.2 });
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+          return;
+        }
+
+        const elem = document.getElementById(cleanId);
+
+        if (!elem) {
+          console.warn(`Element with ID #${cleanId} not found in DOM!`);
+          return;
+        }
+
+        if (lenis) {
+          lenis.scrollTo(elem, {
+            offset,
+            duration: 1.2,
+          });
+        } else {
           const rect = elem.getBoundingClientRect();
           const offsetPosition = rect.top + window.scrollY + offset;
           window.scrollTo({
@@ -111,7 +125,7 @@ export function Navbar() {
             behavior: "smooth",
           });
         }
-      }
+      }, 150);
     },
     [lenis]
   );
@@ -203,7 +217,7 @@ export function Navbar() {
                   <Link
                     href={`#${link.href}`}
                     onClick={(e) => scrollToSection(e, link.href)}
-                    className="text-xl font-bold uppercase tracking-widest text-foreground hover:text-muted-foreground transition-colors"
+                    className="text-xl font-bold uppercase tracking-widest text-foreground hover:text-muted-foreground transition-colors py-2 block"
                   >
                     {link.name}
                   </Link>

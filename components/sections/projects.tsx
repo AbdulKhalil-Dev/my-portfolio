@@ -20,7 +20,7 @@ export default function Projects() {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
   return (
     <>
@@ -30,27 +30,27 @@ export default function Projects() {
         className="relative h-[300vh] bg-background text-foreground scroll-mt-20"
       >
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <motion.div style={{ x }} className="flex gap-10 px-12 md:px-24 items-center">
+          <motion.div style={{ x }} className="flex gap-6 sm:gap-10 px-6 sm:px-12 md:px-24 items-center">
             
             {/* Start Section: Banner */}
-            <div className="flex flex-col justify-center min-w-[340px] sm:min-w-[480px] md:min-w-[580px] shrink-0 space-y-5 pr-6">
-              <span className="text-xs sm:text-sm font-mono text-cyan-400/80 tracking-widest uppercase block">
-                [004] • PORTFOLIO
+            <div className="flex flex-col justify-center w-[85vw] max-w-[320px] sm:max-w-[480px] md:max-w-[580px] shrink-0 space-y-4 sm:space-y-5 pr-2 sm:pr-6">
+              <span className="text-[11px] sm:text-sm font-mono text-cyan-600 dark:text-cyan-400 font-semibold tracking-widest uppercase block">
+                [004]
               </span>
               
-              {/* Clean Typography Layout */}
+              {/* Responsive Typography Layout (Theme Aware) */}
               <div className="flex flex-col leading-none space-y-1">
-                <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight uppercase bg-gradient-to-r from-cyan-400 via-teal-200 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(34,211,238,0.3)]">
+                <span className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight uppercase bg-gradient-to-r from-cyan-600 via-teal-600 to-blue-600 dark:from-cyan-400 dark:via-teal-200 dark:to-blue-500 bg-clip-text text-transparent drop-shadow-sm dark:drop-shadow-[0_0_35px_rgba(34,211,238,0.3)]">
                   SELECTED
                 </span>
-                <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal italic font-serif lowercase bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent pb-2">
+                <span className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-normal italic font-serif lowercase text-slate-800 dark:text-slate-200 pb-1 sm:pb-2">
                   projects
                 </span>
               </div>
 
-              {/* Styled Subtitle */}
-              <p className="text-xs sm:text-sm md:text-base text-slate-300 font-light max-w-md leading-relaxed border-l-2 border-cyan-400/60 pl-4 py-1">
-                A collection of <span className="text-cyan-400 font-medium italic">experiments</span>, products, and digital artifacts forged in the void.
+              {/* Styled Subtitle Fix */}
+              <p className="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 font-normal dark:font-light max-w-xs sm:max-w-md leading-relaxed border-l-2 border-cyan-500 dark:border-cyan-400/60 pl-3 sm:pl-4 py-0.5 sm:py-1">
+                A collection of <span className="text-cyan-600 dark:text-cyan-400 font-semibold italic">experiments</span>, products, and digital artifacts forged in the void.
               </p>
             </div>
 
@@ -62,22 +62,22 @@ export default function Projects() {
                   setSelectedProject(project);
                   setIsModalOpen(true);
                 }}
-                className="group relative flex flex-col justify-between w-[80vw] sm:w-[500px] md:w-[650px] h-[60vh] sm:h-[65vh] shrink-0 cursor-pointer rounded-3xl border border-border/60 bg-card/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/10"
+                className="group relative flex flex-col justify-between w-[85vw] sm:w-[500px] md:w-[650px] h-[55vh] sm:h-[65vh] shrink-0 cursor-pointer rounded-3xl border border-border/60 bg-card/50 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/10"
               >
                 {/* Image Container */}
                 {project.image && (
-                  <div className="relative w-full h-[60%] overflow-hidden bg-muted">
+                  <div className="relative w-full h-[55%] sm:h-[60%] overflow-hidden bg-muted">
                     <Image
                       src={project.image}
                       alt={project.title || "Project preview"}
                       fill
-                      sizes="(max-width: 768px) 80vw, 650px"
+                      sizes="(max-width: 768px) 85vw, 650px"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
 
                     {/* Year Tag Floating Badge */}
                     {project.year && (
-                      <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-background/80 backdrop-blur-md border border-border/60 text-[11px] font-mono text-cyan-400 shadow-lg">
+                      <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-background/80 backdrop-blur-md border border-border/60 text-[11px] font-mono text-cyan-600 dark:text-cyan-400 font-semibold shadow-lg">
                         <Calendar className="w-3 h-3" />
                         <span>{project.year}</span>
                       </div>
@@ -109,16 +109,15 @@ export default function Projects() {
                 )}
 
                 {/* Card Info Section */}
-                <div className="p-6 flex flex-col justify-between flex-grow space-y-3">
+                <div className="p-5 sm:p-6 flex flex-col justify-between flex-grow space-y-3">
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-cyan-400 transition-colors line-clamp-1">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors line-clamp-1">
                         {project.title}
                       </h3>
                       
-                      {/* Year badge inline if image is missing or for additional clarity */}
                       {!project.image && project.year && (
-                        <span className="px-2.5 py-0.5 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
                           {project.year}
                         </span>
                       )}
@@ -179,16 +178,16 @@ export default function Projects() {
               </div>
             ))}
 
-            {/* Enhanced End CTA Section */}
-            <div className="group relative flex flex-col justify-between w-[70vw] sm:w-[400px] md:w-[480px] h-[60vh] sm:h-[65vh] shrink-0 rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-card/80 via-card/40 to-cyan-950/20 backdrop-blur-xl p-8 sm:p-10 transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_50px_rgba(34,211,238,0.15)]">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-                  <Sparkles className="w-6 h-6 animate-pulse" />
+            {/* End CTA Section */}
+            <div className="group relative flex flex-col justify-between w-[85vw] sm:w-[400px] md:w-[480px] h-[55vh] sm:h-[65vh] shrink-0 rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-card/80 via-card/40 to-cyan-950/20 backdrop-blur-xl p-6 sm:p-10 transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_50px_rgba(34,211,238,0.15)] mr-6 sm:mr-12">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400">
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
                 </div>
-                <span className="text-xs font-mono text-cyan-400 tracking-widest uppercase block">
+                <span className="text-[10px] sm:text-xs font-mono text-cyan-600 dark:text-cyan-400 font-semibold tracking-widest uppercase block">
                   WHAT'S NEXT?
                 </span>
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight">
+                <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight">
                   Have a project <br /> in mind?
                 </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
@@ -196,10 +195,10 @@ export default function Projects() {
                 </p>
               </div>
 
-              <div className="pt-6">
+              <div className="pt-4 sm:pt-6">
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-cyan-400 text-slate-950 font-semibold text-xs sm:text-sm hover:bg-cyan-300 hover:gap-4 transition-all duration-300 shadow-lg shadow-cyan-400/25"
+                  className="inline-flex items-center gap-2.5 sm:gap-3 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-cyan-500 dark:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-xs sm:text-sm hover:bg-cyan-600 dark:hover:bg-cyan-300 hover:gap-4 transition-all duration-300 shadow-lg shadow-cyan-500/25 dark:shadow-cyan-400/25"
                 >
                   Start a Conversation
                   <ArrowRight className="w-4 h-4" />
