@@ -5,11 +5,7 @@ const HIGHLIGHT_MAP: Record<"bold" | "italic", string> = {
   italic: "text-foreground/80 italic font-serif font-light",
 };
 
-/**
- * Parses single-line text inline styles (*italic* and **bold**).
- */
 function parseInline(text: string): React.ReactNode {
-  // Matches **bold** first, then *italic*
   const regex = /\*\*(.*?)\*\*|\*(.*?)\*/g;
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
@@ -40,10 +36,6 @@ function parseInline(text: string): React.ReactNode {
   return parts.length === 1 ? parts[0] : <>{parts}</>;
 }
 
-/**
- * Recursively parses dynamic data structures (Strings, Arrays, Objects)
- * to convert basic Markdown strings into React Elements.
- */
 export function parseMarkdown<T>(data: T): T {
   if (typeof data === "string") {
     // Return early if there is no formatting or line breaks to process

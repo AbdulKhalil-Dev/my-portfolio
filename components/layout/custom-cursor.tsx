@@ -37,7 +37,6 @@ export function CustomCursor() {
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
-  // Enable only on fine-pointer (non-touch) devices
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
@@ -48,7 +47,6 @@ export function CustomCursor() {
     return () => cancelAnimationFrame(frameId);
   }, []);
 
-  // Track mouse movement, visibility, and hover state
   useEffect(() => {
     if (!isEnabled) return;
 

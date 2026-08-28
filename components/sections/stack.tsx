@@ -13,7 +13,6 @@ import type { StackItem } from "@/types/stack";
 export default function Stack() {
   const { content, dict } = useLanguage();
 
-  // ✅ All categories configured (Frontend, Backend, Database, Tools)
   const categories = [
     {
       title: dict.frontendStack || "Frontend Technologies",

@@ -8,7 +8,6 @@ export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // 1200ms ko 2200ms kiya taake SVG stroke animation complete ho sake
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.style.overflow = "";

@@ -7,14 +7,14 @@ import { CheckCircle2, Clock, Sparkles } from "lucide-react";
 
 type RoadmapItem = {
   step: string;
-  title: string;
   period: string;
+  title: string;
   description: string;
   status: "completed" | "in-progress" | "up-next";
   skills: string[];
 };
 
-const roadmapData: RoadmapItem[] = [
+const fallbackRoadmapData: RoadmapItem[] = [
   {
     step: "01",
     period: "Phase 1",
@@ -54,23 +54,27 @@ const roadmapData: RoadmapItem[] = [
 ];
 
 export default function Roadmap() {
-  const { dict } = useLanguage();
+  const { dict, content } = useLanguage();
+
+  const roadmapList: RoadmapItem[] =
+    (content as Record<string, any>)?.roadmap || fallbackRoadmapData;
 
   return (
     <section id="roadmap" className="w-full min-h-screen py-16 md:py-24 bg-background text-foreground relative scroll-mt-20">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 w-full max-w-5xl">
+        
         {/* Section Header */}
-        <div className="flex flex-col gap-2 mb-12 md:mb-16">
+        <div className="flex flex-col gap-3 mb-12 md:mb-16">
           <BlurReveal>
-            <span className="text-xs sm:text-sm font-mono text-muted-foreground uppercase tracking-wider">
-              [003] • My Journey
-            </span>
+            <span className="title-counter">[003]</span>
           </BlurReveal>
+          
           <BlurReveal>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
               {dict?.title?.roadmap || "Developer Roadmap"}
             </h2>
           </BlurReveal>
+          
           <BlurReveal>
             <p className="text-sm sm:text-base text-muted-foreground max-w-xl">
               From foundational web technologies to modern full-stack frameworks and animation engines.
@@ -80,10 +84,10 @@ export default function Roadmap() {
 
         {/* Timeline Container */}
         <div className="relative border-l border-border/70 ml-3 sm:ml-6 md:ml-8 pl-5 sm:pl-8 md:pl-10 space-y-8 md:space-y-12">
-          {roadmapData.map((item, idx) => (
+          {roadmapList.map((item, idx) => (
             <BlurReveal key={idx} delay={idx * 0.1}>
               <div className="relative group">
-                {/* Status Dot / Icon Indicator */}
+                {/* Status Indicator Icon */}
                 <div className="absolute -left-[27px] sm:-left-[39px] md:-left-[47px] top-1.5 bg-background p-1 rounded-full border border-border">
                   {item.status === "completed" && (
                     <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 fill-emerald-500/10" />
@@ -97,11 +101,12 @@ export default function Roadmap() {
                 </div>
 
                 {/* Content Card */}
-                <div className="p-5 sm:p-6 md:p-7 rounded-2xl border border-border bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-xl hover:-translate-y-1">
-                  {/* Card Top Meta */}
+                <div className="p-5 sm:p-6 md:p-7 rounded-2xl border border-border bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/40 hover:shadow-xl hover:-translate-y-1">
+                  
+                  {/* Top Metadata */}
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-accent">
+                      <span className="text-xs font-mono font-bold text-cyan-400">
                         {item.step}
                       </span>
                       <span className="text-xs text-muted-foreground">|</span>
@@ -124,7 +129,7 @@ export default function Roadmap() {
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-cyan-400 transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-5">
@@ -133,10 +138,10 @@ export default function Roadmap() {
 
                   {/* Tech Stack Badges */}
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {item.skills.map((skill, sIdx) => (
+                    {item.skills?.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-secondary/80 text-secondary-foreground border border-border/50 transition-colors hover:bg-accent/10 hover:text-accent"
+                        className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-secondary/80 text-secondary-foreground border border-border/50 transition-colors hover:bg-cyan-500/10 hover:text-cyan-400"
                       >
                         {skill}
                       </span>

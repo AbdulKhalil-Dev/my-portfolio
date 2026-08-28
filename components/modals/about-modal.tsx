@@ -23,7 +23,6 @@ export function AboutModal({ open, onOpenChange }: AboutModalProps) {
         showCloseButton={true}
         className="flex flex-col w-[92vw] sm:w-full sm:max-w-[640px] max-h-[85vh] p-0 gap-0 border border-border/50 bg-background/95 backdrop-blur-xl overflow-hidden"
       >
-        {/* top gradient line - decorative only, NOT a container */}
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent z-10" />
 
         {/* header */}

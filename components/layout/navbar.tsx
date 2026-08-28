@@ -90,7 +90,6 @@ export function Navbar() {
       const cleanId = targetId.replace("#", "");
       const elem = document.getElementById(cleanId);
 
-      // Instant measurement before state transitions
       const currentHeaderHeight = headerRef.current ? headerRef.current.offsetHeight : 80;
       const isDesktop = window.innerWidth >= 1280;
       const isAboutOnDesktop = cleanId === "about" && isDesktop;

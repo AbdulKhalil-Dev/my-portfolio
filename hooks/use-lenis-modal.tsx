@@ -13,7 +13,6 @@ export function useLenisModal(open: boolean) {
       lenis.start();
     }
 
-    // Cleanup: Ensure scroll resumes if component unmounts unexpectedly
     return () => {
       lenis.start();
     };

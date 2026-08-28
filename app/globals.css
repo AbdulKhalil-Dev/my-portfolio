@@ -10,22 +10,34 @@
 }
 
 @media (min-width: 640px) {
-  :root { --container-spacing: 1.5rem; }
+  :root {
+    --container-spacing: 1.5rem;
+  }
 }
 @media (min-width: 768px) {
-  :root { --container-spacing: 2rem; }
+  :root {
+    --container-spacing: 2rem;
+  }
 }
 @media (min-width: 1024px) {
-  :root { --container-spacing: 2.5rem; }
+  :root {
+    --container-spacing: 2.5rem;
+  }
 }
 @media (min-width: 1280px) {
-  :root { --container-spacing: 3rem; }
+  :root {
+    --container-spacing: 3rem;
+  }
 }
 @media (min-width: 1536px) {
-  :root { --container-spacing: 4rem; }
+  :root {
+    --container-spacing: 4rem;
+  }
 }
 @media (min-width: 1920px) {
-  :root { --container-spacing: 5rem; }
+  :root {
+    --container-spacing: 5rem;
+  }
 }
 
 /* Consolidated Theme Declarations (Tailwind v4) */
@@ -42,7 +54,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -162,7 +174,7 @@
   }
 
   .title-counter {
-    @apply text-sm md:text-base font-bold tracking-[0.2em] text-muted-foreground uppercase;
+    @apply text-xs md:text-sm font-mono text-cyan-400 tracking-widest uppercase px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 inline-block;
   }
 
   .container-void {

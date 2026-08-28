@@ -3,9 +3,6 @@
 import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
-// ==========================================
-// Particle Class (As per your screenshots)
-// ==========================================
 class Particle {
   x: number;
   y: number;
@@ -75,7 +72,6 @@ class Particle {
   draw(ctx: CanvasRenderingContext2D, isDark: boolean) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    // Theme-aware color: white particles on dark bg, dark particles on light bg
     ctx.fillStyle = isDark
       ? `rgba(255, 255, 255, ${this.alpha})`
       : `rgba(0, 0, 0, ${this.alpha})`;
@@ -83,14 +79,9 @@ class Particle {
   }
 }
 
-// ==========================================
-// Complete React Component for your Portfolio
-// ==========================================
 export default function InteractiveParticles() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { resolvedTheme } = useTheme();
-  // Kept in a ref so the animation loop (started once) always reads the
-  // latest theme without needing to be torn down and restarted on toggle.
   const isDarkRef = useRef(resolvedTheme !== "light");
 
   useEffect(() => {
@@ -107,14 +98,13 @@ export default function InteractiveParticles() {
     let animationFrameId: number;
     let particles: Particle[] = [];
 
-    // Device Pixel Ratio for High-DPI/Retina screens stability
     const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
 
     // Mouse state
     const mouse = {
       x: -9999,
       y: -9999,
-      radius: 100 * dpr, // Interaction radius
+      radius: 100 * dpr,
     };
 
     // Resize handler
