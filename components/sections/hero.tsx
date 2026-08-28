@@ -131,8 +131,11 @@ export default function Hero() {
         className="relative z-20 flex-1 flex-col gap-6 sm:gap-8 xl:gap-12 justify-end w-full h-full will-[opacity,transform,filter]"
       >
         <div className="flex justify-between items-start w-full">
-          <div className="text-4xl sm:text-6xl text-foreground/20 dark:text-foreground/10 grunge-text rotate-90 pointer-events-none select-none">
-            {"/*/*/"}
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">
+              Available for work
+            </span>
           </div>
 
           <div className="flex flex-col items-center gap-4">
