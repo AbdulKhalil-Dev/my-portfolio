@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import {
   useScroll,
@@ -14,30 +14,82 @@ import { ContactModal } from "@/components/modals/contact-modal";
 import InteractiveParticles from "@/components/effects/interactive-particles";
 
 const TRACK_1 = [
-  "/hero-slider/atam-1.jpeg",
-  "/hero-slider/atam-2.jpg",
-  "/hero-slider/khalil-1.jpeg",
-  "/hero-slider/khalil-2.png",
-  "/hero-slider/makise-1.webp",
-  "/hero-slider/makise-2.jpeg",
+  "/hero-slider/3d-portfolio.png",
+  "/hero-slider/age.png",
+  "/hero-slider/blog.png",
+  "/hero-slider/travel-agency.png",
+  "/hero-slider/clock.png",
+  "/hero-slider/news-app.png",
 ] as const;
 
 const TRACK_2 = [
-  "/hero-slider/atam-3.jpg",
-  "/hero-slider/atam-5.avif",
-  "/hero-slider/khalil-2.png",
-  "/hero-slider/atam-4.avif",
-  "/hero-slider/atam-2.jpg",
-  "/hero-slider/makise-1.webp",
+  "/hero-slider/portfolio.png",
+  "/hero-slider/travel-agency.png",
+  "/hero-slider/news-app.png",
+  "/hero-slider/3d-portfolio.png",
+  "/hero-slider/travel-agency.png",
+  "/hero-slider/blog.png",
 ] as const;
 
 const COL_1_IMAGES = [...TRACK_1, ...TRACK_1];
 const COL_2_IMAGES = [...TRACK_2, ...TRACK_2];
 
+const TYPEWRITER_WORDS = [
+  "FRONTEND DEVELOPER",
+  "REACT & NEXT.JS EXPERT",
+  "UI/UX FOCUSED DEVELOPER",
+  "CREATIVE WEB DEVELOPER",
+  "TYPESCRIPT ENTHUSIAST",
+];
+
+function useTypewriter(words: string[]) {
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[index];
+
+    const timeout = setTimeout(
+      () => {
+        if (!deleting) {
+          setText(currentWord.substring(0, charIndex + 1));
+
+          setCharIndex((prev) => {
+            const newVal = prev + 1;
+            if (newVal === currentWord.length) {
+              setDeleting(true);
+            }
+            return newVal;
+          });
+        } else {
+          setText(currentWord.substring(0, charIndex - 1));
+
+          setCharIndex((prev) => {
+            const newVal = prev - 1;
+            if (newVal === 0) {
+              setDeleting(false);
+              setIndex((prevIdx) => (prevIdx + 1) % words.length);
+            }
+            return newVal;
+          });
+        }
+      },
+      deleting ? 60 : 100,
+    );
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, deleting, index, words]);
+
+  return text;
+}
+
 export default function Hero() {
   const { content, dict } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const [contactOpen, setContactOpen] = useState(false);
+  const typedText = useTypewriter(TYPEWRITER_WORDS);
 
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 800], [1, 0]);
@@ -64,12 +116,13 @@ export default function Hero() {
         <InteractiveParticles />
       </div>
 
-      {/* Modern Vertical Image Slider */}
+      {/* Modern Vertical Image Slider — hidden on mobile so it doesn't
+          crowd the hero text on small screens */}
       <motion.div
         style={{ opacity }}
-        className="absolute top-0 right-2 sm:right-6 md:right-10 lg:right-20 xl:right-32 bottom-0 h-full w-[160px] sm:w-[220px] md:w-[320px] lg:w-[380px] xl:w-[420px] flex gap-3 sm:gap-4 px-2 overflow-hidden z-5 pointer-events-none select-none opacity-30 dark:opacity-45"
+        className="hidden sm:flex absolute top-0 right-2 sm:right-6 md:right-10 lg:right-20 xl:right-32 bottom-0 h-full w-[220px] md:w-[320px] lg:w-[380px] xl:w-[420px] gap-3 sm:gap-4 px-2 overflow-hidden z-5 pointer-events-none select-none opacity-30 dark:opacity-45"
       >
-        <div className="hidden sm:block flex-1 h-full overflow-hidden relative">
+        <div className="flex-1 h-full overflow-hidden relative">
           <motion.div
             animate={{ y: ["0%", "-50%"] }}
             transition={{
@@ -90,7 +143,7 @@ export default function Hero() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
-                  className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 contrast-[1.05] brightness-95 dark:brightness-[0.75]"
+                  className="object-cover object-center transition-all duration-700 contrast-[1.05] brightness-95 dark:brightness-[0.75]"
                 />
               </div>
             ))}
@@ -118,7 +171,7 @@ export default function Hero() {
                   fill
                   sizes="(max-width: 640px) 45vw, (max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
-                  className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 contrast-[1.05] brightness-95 dark:brightness-[0.75]"
+                  className="object-cover object-center transition-all duration-700 contrast-[1.05] brightness-95 dark:brightness-[0.75]"
                 />
               </div>
             ))}
@@ -170,11 +223,15 @@ export default function Hero() {
           <div className="overflow-hidden">
             <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[130px] font-black tracking-tighter leading-[0.88] text-foreground uppercase">
               KHALIL
-              <br />
-              <span className="bg-gradient-to-r from-slate-900 via-cyan-600 to-slate-800 dark:from-white dark:via-cyan-400 dark:to-slate-300 bg-clip-text text-transparent">
-                PORTFOLIO
-              </span>
             </h1>
+          </div>
+          <div className="mt-2 sm:mt-3 h-[1.4em] flex items-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-slate-900 via-cyan-600 to-slate-800 dark:from-white dark:via-cyan-400 dark:to-slate-300 bg-clip-text text-transparent">
+              {typedText}
+              <span className="animate-pulse text-cyan-500 dark:text-cyan-400">
+                |
+              </span>
+            </h2>
           </div>
         </div>
 
