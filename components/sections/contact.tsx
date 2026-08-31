@@ -26,7 +26,8 @@ export default function Contact() {
       id="contact"
       className="relative pt-20 sm:pt-24 md:pt-32 xl:pt-40 pb-12 sm:pb-24 bg-background overflow-hidden border-t border-border/50"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-cyan-500/5 dark:bg-cyan-500/15 rounded-full blur-[120px] pointer-events-none" />
+      {/* Smooth Background Glow (Fixed for large screens) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] lg:w-[650px] h-[300px] sm:h-[500px] lg:h-[650px] bg-[radial-gradient(circle,_rgba(6,182,212,0.15)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">

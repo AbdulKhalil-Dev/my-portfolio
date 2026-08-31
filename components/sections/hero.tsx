@@ -108,19 +108,16 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="sticky top-0 min-h-[100dvh] lg:h-screen w-full flex flex-col justify-between bg-background px-4 sm:px-8 md:px-16 pt-24 pb-8 sm:pt-28 sm:pb-12 lg:pt-32 lg:pb-16 2xl:pb-24 overflow-hidden"
+      className="sticky top-0 min-h-screen w-full flex flex-col justify-between bg-background px-4 sm:px-8 md:px-12 lg:px-16 pt-20 pb-8 sm:pt-24 sm:pb-10 lg:pt-28 lg:pb-12 overflow-hidden"
       id="home"
     >
-      {/* Background Particles Container */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <InteractiveParticles />
       </div>
 
-      {/* Modern Vertical Image Slider — hidden on mobile so it doesn't
-          crowd the hero text on small screens */}
       <motion.div
         style={{ opacity }}
-        className="hidden sm:flex absolute top-0 right-2 sm:right-6 md:right-10 lg:right-20 xl:right-32 bottom-0 h-full w-[220px] md:w-[320px] lg:w-[380px] xl:w-[420px] gap-3 sm:gap-4 px-2 overflow-hidden z-5 pointer-events-none select-none opacity-30 dark:opacity-45"
+        className="hidden xl:flex absolute top-0 right-6 lg:right-12 xl:right-16 bottom-0 h-full w-[240px] xl:w-[340px] gap-3 px-2 overflow-hidden z-0 pointer-events-none select-none opacity-20 dark:opacity-35"
       >
         <div className="flex-1 h-full overflow-hidden relative">
           <motion.div
@@ -141,7 +138,7 @@ export default function Hero() {
                   src={src}
                   alt=""
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 20vw, 12vw"
+                  sizes="(max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
                   className="object-cover object-center transition-all duration-700 contrast-[1.05] brightness-95 dark:brightness-[0.75]"
                 />
@@ -169,7 +166,7 @@ export default function Hero() {
                   src={src}
                   alt=""
                   fill
-                  sizes="(max-width: 640px) 45vw, (max-width: 1280px) 20vw, 12vw"
+                  sizes="(max-width: 1280px) 20vw, 12vw"
                   priority={idx < 2}
                   className="object-cover object-center transition-all duration-700 contrast-[1.05] brightness-95 dark:brightness-[0.75]"
                 />
@@ -178,17 +175,14 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Smooth Theme-Aware Gradient Masks */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background pointer-events-none z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent pointer-events-none z-10" />
       </motion.div>
 
-      {/* Main Hero Content */}
       <motion.div
         style={{ opacity, scale, y, filter }}
-        className="relative z-20 flex-1 flex flex-col gap-4 sm:gap-6 lg:gap-8 xl:gap-12 justify-between w-full h-full will-[opacity,transform,filter]"
+        className="relative z-20 flex-1 flex flex-col gap-4 sm:gap-6 justify-between w-full h-full will-[opacity,transform,filter]"
       >
-        {/* Top Indicator & Scroll Line */}
         <div className="flex justify-between items-start w-full pt-2">
           <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 backdrop-blur-md">
             <span className="relative flex h-2 w-2">
@@ -218,15 +212,14 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Center Headline */}
         <div className="w-full my-auto flex flex-col justify-center relative z-20">
           <div className="overflow-hidden">
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[130px] font-black tracking-tighter leading-[0.88] text-foreground uppercase">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-[110px] 2xl:text-[130px] font-black tracking-tighter leading-[0.9] text-foreground uppercase">
               KHALIL
             </h1>
           </div>
-          <div className="mt-2 sm:mt-3 h-[1.4em] flex items-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-slate-900 via-cyan-600 to-slate-800 dark:from-white dark:via-cyan-400 dark:to-slate-300 bg-clip-text text-transparent">
+          <div className="mt-2 sm:mt-3 min-h-[40px] flex items-center">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-tight bg-gradient-to-r from-slate-900 via-cyan-600 to-slate-800 dark:from-white dark:via-cyan-400 dark:to-slate-300 bg-clip-text text-transparent">
               {typedText}
               <span className="animate-pulse text-cyan-500 dark:text-cyan-400">
                 |
@@ -235,18 +228,16 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom CTA Block */}
-        <div className="space-y-5 sm:space-y-6 lg:space-y-8 pb-2">
-          <p className="text-base sm:text-lg lg:text-xl text-slate-700 dark:text-slate-300 font-normal leading-relaxed max-w-xs sm:max-w-md lg:max-w-xl">
+        <div className="space-y-4 sm:space-y-6 pb-2">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed max-w-xs sm:max-w-md lg:max-w-xl">
             {content?.about?.description ||
               "I bridge design and modern technology to build fast, scalable, and responsive web applications with clean code architecture."}
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-            {/* Primary Action Button */}
             <button
               onClick={() => setContactOpen(true)}
-              className="w-full sm:w-fit group relative flex h-12 sm:h-14 xl:h-16 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-foreground px-6 xl:px-10 text-background font-semibold tracking-[0.12em] uppercase text-xs xl:text-sm shadow-xl transition-all duration-300 hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-500 hover:shadow-cyan-500/25 hover:-translate-y-0.5"
+              className="w-full sm:w-fit group relative flex h-12 sm:h-14 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-foreground px-6 xl:px-8 text-background font-semibold tracking-[0.12em] uppercase text-xs xl:text-sm shadow-xl transition-all duration-300 hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-500 hover:shadow-cyan-500/25 hover:-translate-y-0.5"
             >
               <span className="relative z-10 flex items-center gap-2 xl:gap-3">
                 {dict?.contactMe || "CONTACT ME"}
@@ -254,10 +245,9 @@ export default function Hero() {
               </span>
             </button>
 
-            {/* Secondary Action Button */}
             <button
               onClick={scrollToProjects}
-              className="w-full sm:w-fit group relative flex h-12 sm:h-14 xl:h-16 cursor-pointer items-center justify-center rounded-full border border-border/80 bg-card/60 backdrop-blur-md px-6 xl:px-10 text-foreground font-semibold tracking-[0.12em] uppercase text-xs xl:text-sm transition-all duration-300 hover:border-cyan-500/50 hover:bg-accent/80 hover:-translate-y-0.5 shadow-sm"
+              className="w-full sm:w-fit group relative flex h-12 sm:h-14 cursor-pointer items-center justify-center rounded-full border border-border/80 bg-card/60 backdrop-blur-md px-6 xl:px-8 text-foreground font-semibold tracking-[0.12em] uppercase text-xs xl:text-sm transition-all duration-300 hover:border-cyan-500/50 hover:bg-accent/80 hover:-translate-y-0.5 shadow-sm"
             >
               <span className="relative z-10 flex items-center gap-2 xl:gap-3">
                 <Mouse className="w-4 h-4 xl:w-5 xl:h-5 text-cyan-600 dark:text-cyan-400 transition-transform duration-300 group-hover:scale-110" />
