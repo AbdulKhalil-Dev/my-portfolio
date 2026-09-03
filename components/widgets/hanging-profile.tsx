@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { User } from "lucide-react";
+// import { User } from "lucide-react";
+import Image from "next/image";
 
 const ANCHOR_X = 150;
-const ANCHOR_Y = 8; // pushed down so the anchor dot isn't clipped at the top edge
+const ANCHOR_Y = 8; 
 
 export function HangingProfile() {
   const boxRef = useRef<HTMLDivElement>(null);
@@ -13,7 +14,6 @@ export function HangingProfile() {
   const gravity = 0.5;
   const damping = 0.985;
 
-  // Only used for the initial paint (SSR-safe); live updates go through refs.
   const [initialCoords] = useState({
     x2: ANCHOR_X,
     y2: ANCHOR_Y + ropeLength,
@@ -142,9 +142,19 @@ export function HangingProfile() {
           touchAction: "none",
         }}
       >
-        <div className="w-20 h-20 rounded-full overflow-hidden border border-foreground/20 mb-3 bg-foreground/5 flex items-center justify-center pointer-events-none group-hover:border-foreground/40 transition-colors duration-300">
+        {/* <div className="w-20 h-20 rounded-full overflow-hidden border border-foreground/20 mb-3 bg-foreground/5 flex items-center justify-center pointer-events-none group-hover:border-foreground/40 transition-colors duration-300">
           <User className="w-10 h-10 text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300" />
-        </div>
+        </div> */}
+
+        <div className="relative w-20 h-20 rounded-full overflow-hidden border border-foreground/20 mb-3 bg-foreground/5 pointer-events-none group-hover:border-foreground/40 transition-colors duration-300">
+  <Image
+    src="/profile.jpeg"
+    alt="Khalil - Developer"
+    fill
+    className="object-cover"
+    priority
+  />
+</div>
         <div className="flex flex-col items-center gap-1 pointer-events-none pb-1">
           <span className="text-xs font-bold tracking-[0.2em] text-foreground/80">
             KHALIL
