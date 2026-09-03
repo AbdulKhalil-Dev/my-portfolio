@@ -5,7 +5,6 @@ import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/providers/language-provider";
 import { BlurReveal } from "@/components/effects/blur-reveal";
 import { sanitizePhone } from "@/lib/utils";
-import { ShineButton } from "@/components/ui/shine-button";
 
 export default function Contact() {
   const { content, dict } = useLanguage();
@@ -69,17 +68,16 @@ export default function Contact() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
 
                 {contactData.email && (
-                  <ShineButton
+                  <a
                     href={`mailto:${contactData.email}`}
-                    target="_self"
-                    className="w-full sm:w-auto flex-1 px-5 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold rounded-2xl border border-border/80 bg-card text-foreground hover:bg-muted transition-all duration-300 shadow-sm"
+                    className="w-full sm:w-auto flex-1 group"
                   >
-                    <span className="flex items-center justify-center gap-2.5 sm:gap-3">
+                    <div className="w-full flex items-center justify-center gap-2.5 sm:gap-3 px-5 sm:px-8 py-3.5 sm:py-4 rounded-2xl border border-border/80 bg-card backdrop-blur-md hover:bg-muted text-foreground text-xs sm:text-sm font-semibold transition-all duration-300 shadow-sm">
                       <Mail className="w-4 h-4 text-muted-foreground shrink-0" />
                       <span className="truncate">{contactData.email}</span>
-                      <ArrowUpRight className="w-4 h-4 text-muted-foreground shrink-0" />
-                    </span>
-                  </ShineButton>
+                      <ArrowUpRight className="w-4 h-4 opacity-70 text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
+                    </div>
+                  </a>
                 )}
 
                 {contactData.phone && (
@@ -112,7 +110,7 @@ export default function Contact() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border border-border/80 bg-card hover:bg-muted text-xs font-medium text-foreground transition-all duration-200 hover:scale-105 shadow-sm"
+                      className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border border-border/80 bg-card hover:bg-muted text-xs font-medium text-foreground transition-all duration-300 hover:scale-105 shadow-sm"
                     >
                       <span>{item.label}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground" />

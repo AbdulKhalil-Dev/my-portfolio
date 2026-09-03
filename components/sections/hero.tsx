@@ -183,91 +183,93 @@ export default function Hero() {
           {/* Right Side: Showcase Images Slider Container */}
           <motion.div
             style={{ opacity }}
-            className="lg:col-span-5 xl:col-span-5 relative h-[350px] sm:h-[450px] lg:h-[550px] w-full flex gap-4 overflow-hidden rounded-3xl p-2 select-none pointer-events-none"
+            className="lg:col-span-5 xl:col-span-5 relative h-[350px] sm:h-[450px] lg:h-[550px] w-full flex gap-4 overflow-visible rounded-3xl p-2 select-none pointer-events-none"
           >
-            {/* Column 1 */}
-            <div className="flex-1 h-full overflow-hidden relative">
-              <motion.div
-                animate={{ y: ["0%", "-50%"] }}
-                transition={{
-                  ease: "linear",
-                  duration: 25,
-                  repeat: Infinity,
-                }}
-                className="flex flex-col gap-4"
+            {/* Vertical Scroll Indicator - top right of the slider */}
+            <div className="hidden md:flex flex-col items-center gap-3 absolute -top-1 -right-7 z-20">
+              <span
+                className="text-[10px] font-mono tracking-[0.3em] uppercase text-muted-foreground"
+                style={{ writingMode: "vertical-rl" }}
               >
-                {COL_1_IMAGES.map((src, idx) => (
-                  <div
-                    key={`col1-${src}-${idx}`}
-                    className="w-full aspect-[4/5] relative overflow-hidden rounded-2xl border border-border/60 shadow-md bg-card/60 backdrop-blur-md"
-                  >
-                    <Image
-                      src={src}
-                      alt="Portfolio showcase preview"
-                      fill
-                      sizes="(max-width: 1024px) 45vw, 25vw"
-                      priority={idx < 2}
-                      className="object-cover object-top transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                ))}
-              </motion.div>
+                {dict?.scrollDown || "SCROLL DOWN"}
+              </span>
+              <div className="h-12 w-px bg-border relative overflow-hidden">
+                <motion.div
+                  className="absolute left-0 top-0 w-full h-1/2 bg-cyan-500"
+                  animate={{ y: ["-100%", "200%"] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </div>
             </div>
 
-            {/* Column 2 */}
-            <div className="flex-1 h-full overflow-hidden relative pt-6">
-              <motion.div
-                animate={{ y: ["-50%", "0%"] }}
-                transition={{
-                  ease: "linear",
-                  duration: 25,
-                  repeat: Infinity,
-                }}
-                className="flex flex-col gap-4"
-              >
-                {COL_2_IMAGES.map((src, idx) => (
-                  <div
-                    key={`col2-${src}-${idx}`}
-                    className="w-full aspect-[4/5] relative overflow-hidden rounded-2xl border border-border/60 shadow-md bg-card/60 backdrop-blur-md"
-                  >
-                    <Image
-                      src={src}
-                      alt="Portfolio showcase preview"
-                      fill
-                      sizes="(max-width: 1024px) 45vw, 25vw"
-                      priority={idx < 2}
-                      className="object-cover object-top transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                ))}
-              </motion.div>
-            </div>
+            <div className="absolute inset-0 flex gap-4 overflow-hidden rounded-3xl">
+              {/* Column 1 */}
+              <div className="flex-1 h-full overflow-hidden relative">
+                <motion.div
+                  animate={{ y: ["0%", "-50%"] }}
+                  transition={{
+                    ease: "linear",
+                    duration: 25,
+                    repeat: Infinity,
+                  }}
+                  className="flex flex-col gap-4"
+                >
+                  {COL_1_IMAGES.map((src, idx) => (
+                    <div
+                      key={`col1-${src}-${idx}`}
+                      className="w-full aspect-[4/5] relative overflow-hidden rounded-2xl border border-border/60 shadow-md bg-card/60 backdrop-blur-md"
+                    >
+                      <Image
+                        src={src}
+                        alt="Portfolio showcase preview"
+                        fill
+                        sizes="(max-width: 1024px) 45vw, 25vw"
+                        priority={idx < 2}
+                        className="object-cover object-top transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
 
-            {/* Gradient Mask Top/Bottom */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background pointer-events-none z-10 opacity-90" />
+              {/* Column 2 */}
+              <div className="flex-1 h-full overflow-hidden relative pt-6">
+                <motion.div
+                  animate={{ y: ["-50%", "0%"] }}
+                  transition={{
+                    ease: "linear",
+                    duration: 25,
+                    repeat: Infinity,
+                  }}
+                  className="flex flex-col gap-4"
+                >
+                  {COL_2_IMAGES.map((src, idx) => (
+                    <div
+                      key={`col2-${src}-${idx}`}
+                      className="w-full aspect-[4/5] relative overflow-hidden rounded-2xl border border-border/60 shadow-md bg-card/60 backdrop-blur-md"
+                    >
+                      <Image
+                        src={src}
+                        alt="Portfolio showcase preview"
+                        fill
+                        sizes="(max-width: 1024px) 45vw, 25vw"
+                        priority={idx < 2}
+                        className="object-cover object-top transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Gradient Mask Top/Bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background pointer-events-none z-10 opacity-90" />
+            </div>
           </motion.div>
         </div>
-
-        {/* Footer Scroll Indicator - Mobile par Hidden (hidden md:flex) */}
-        <div className="hidden md:flex justify-end items-center w-full pt-4 relative z-20">
-          <div className="flex items-center gap-3">
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-muted-foreground">
-              {dict?.scrollDown || "SCROLL DOWN"}
-            </span>
-            <div className="w-12 h-px bg-border relative overflow-hidden">
-              <motion.div
-                className="absolute top-0 left-0 h-full w-1/2 bg-cyan-500"
-                animate={{ x: ["-100%", "200%"] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
