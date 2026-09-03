@@ -140,7 +140,7 @@ export default function Hero() {
 
             <div className="space-y-3">
               <h1 className="font-absans text-5xl sm:text-7xl md:text-8xl xl:text-9xl font-black tracking-tighter leading-none text-foreground uppercase">
-                KHALIL
+                ABDUL KHALIL
               </h1>
               <div className="min-h-[36px] flex items-center">
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight bg-gradient-to-r from-slate-900 via-cyan-600 to-slate-700 dark:from-white dark:via-cyan-400 dark:to-slate-300 bg-clip-text text-transparent">
